@@ -2338,7 +2338,9 @@ class BaseModelResource(Resource):
 
             if field_object.readonly:
                 continue
-
+            if bundle.data[field_name] is None:
+                # see hydrate_m2m. indicates to preserve content on the attribute
+                continue
             # Get the manager.
             related_mngr = None
 
